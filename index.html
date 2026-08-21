@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>MOTO RUSH — outrun the traffic</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ff2d78'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div id="app"></div>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hidden">
+  <div class="hud-top">
+    <div class="hud-block">
+      <div class="hud-label">SCORE</div>
+      <div class="hud-value" id="scoreVal">0</div>
+      <div class="hud-sub"><span id="distVal">0</span> m &nbsp;·&nbsp; BEST <span id="hiVal">0</span></div>
+    </div>
+    <div class="hud-block center">
+      <div id="popups"></div>
+    </div>
+    <div class="hud-block right">
+      <div class="hud-label">SPEED</div>
+      <div class="hud-value"><span id="speedVal">0</span><span class="unit">km/h</span></div>
+    </div>
+  </div>
+
+  <div class="hud-bottom">
+    <div id="fuelWrap" class="fuel-wrap">
+      <div class="fuel-icon">⛽</div>
+      <div class="fuel-bar"><div id="fuelFill"></div></div>
+      <div class="fuel-pct" id="fuelPct">100%</div>
+    </div>
+    <button id="muteBtn" class="icon-btn" title="Mute (M)">🔊</button>
+  </div>
+</div>
+
+<!-- ============ MENU ============ -->
+<div id="menuOv" class="overlay">
+  <div class="panel">
+    <div class="title">MOTO<span>RUSH</span></div>
+    <div class="tagline">outrun the oncoming traffic</div>
+    <div class="plays-line" id="playsLine">▶ <span id="playsVal">…</span> rides worldwide</div>
+    <ul class="rules">
+      <li>◀ ▶ / A D &nbsp;(or tap screen sides) to switch lanes</li>
+      <li>Dodge oncoming cars — some will <b>signal and cut into your lane</b></li>
+      <li>Grab <b class="fuel-txt">fuel cans</b> or the tank runs dry</li>
+      <li>Speed keeps climbing. How far can you go?</li>
+    </ul>
+    <button id="startBtn" class="big-btn">START ENGINE</button>
+    <div class="hint">M mute · P pause</div>
+    <div class="contact">
+      <a class="ct ct-github" target="_blank" rel="noopener">GitHub</a>
+      <a class="ct ct-x" target="_blank" rel="noopener">X</a>
+      <a class="ct ct-email">Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GAME OVER ============ -->
+<div id="overOv" class="overlay hidden">
+  <div class="panel">
+    <div class="title small" id="reasonTxt">WRECKED</div>
+    <div class="final-score"><span id="finalScore">0</span></div>
+    <div class="tagline" id="bestLine">BEST 0</div>
+    <div id="statsLine" class="hint"></div>
+    <button id="againBtn" class="big-btn">RIDE AGAIN</button>
+    <div class="hint">or press R</div>
+    <div class="plays-line small">▶ <span id="playsValOver">…</span> rides worldwide so far</div>
+    <div class="made-by"><a class="ct-x" target="_blank" rel="noopener">X</a> · <a class="ct-github" target="_blank" rel="noopener">GitHub</a> · <a class="ct-email">Email</a></div>
+  </div>
+</div>
+
+<!-- ============ PAUSE ============ -->
+<div id="pauseOv" class="overlay hidden">
+  <div class="panel slim">
+    <div class="title small">PAUSED</div>
+    <div class="hint">press P to resume</div>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
