@@ -52,6 +52,11 @@ Before deploying, edit the two config blocks at the top of the contact section i
 - `COUNTER.ns` — the Abacus namespace for the global play counter; keep its unique suffix so
   no other site shares your tally
 
+**Traffic counting:** `index.html` loads Vercel Web Analytics
+(`/_vercel/insights/script.js`). It only reports from the Vercel deployment — anywhere else
+the request 404s and the deferred script is a no-op, so local play and GitHub Pages are
+unaffected. Enable it under Analytics in the Vercel project for numbers to appear.
+
 **Play counting:** every "START ENGINE" fires an anonymous increment to
 `abacus.jasoncameron.dev` (free CountAPI-style service, no account). The menu shows the live
 global count; if the service is unreachable it falls back to a per-device count from
